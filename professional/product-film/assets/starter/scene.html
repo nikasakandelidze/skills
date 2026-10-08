@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Film</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  html, body { margin: 0; height: 100%; background: #fff; overflow: hidden; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  /* The film is one SVG. The world sits in one group the camera pans and scales (#world); titles and anything
+     that must keep its size on screen sit on top in screen space (#over). Nothing is ever in perspective. */
+  #frame { position: relative; flex: none; }
+  #film { position: absolute; left: 0; top: 0; overflow: hidden; background: #fff; transform-origin: 0 0; }
+  #film > svg { display: block; }
+  input { width: min(900px, 90vw); accent-color: #000; }
+  .render body { display: block; }
+  .render input { display: none; }
+</style>
+<script>if (location.hash === '#render') document.documentElement.classList.add('render');</script>
+</head>
+<body>
+<div id="frame"><div id="film"><svg id="svg" xmlns="http://www.w3.org/2000/svg">
+  <defs id="defs"></defs>
+  <rect id="paper" fill="#fff"/>
+  <g id="world"></g>
+  <g id="over"></g>
+</svg></div></div>
+<input id="bar" type="range" min="0" value="0" step="1" aria-label="Time">
+<script src="timeline.js"></script>
+<script src="lib.js"></script>
+<script src="film.js"></script>
+<script>
+  // To scrub by hand the film is scaled to the window (space pauses, ?t=12 starts at 12 s); rendered, it is 1:1.
+  if (!document.documentElement.classList.contains('render')) {
+    const fit = () => {
+      const { W, H } = window.FILM;
+      const k = Math.min(innerWidth / W, (innerHeight - 40) / H);
+      document.getElementById('film').style.transform = `scale(${k})`;
+      Object.assign(document.getElementById('frame').style, { width: `${W * k}px`, height: `${H * k}px` });
+    };
+    addEventListener('resize', fit); fit();
+  }
+</script>
+</body>
+</html>
