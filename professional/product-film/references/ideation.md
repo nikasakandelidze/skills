@@ -1,7 +1,7 @@
 # Ideation: finding an idea that is new, simple and true
 
-The user's pattern, every time: they ask for ideas ("10 most creative variations"), push back on the safe ones
-("something more original", "assess critically and think more creatively"), then pick one or say "pick the best
+The usual pattern: someone asks for ideas ("10 most creative variations"), pushes back on the safe ones
+("something more original", "assess critically and think more creatively"), then picks one or says "pick the best
 and do". This file is about doing the pushing yourself, before they have to.
 
 ## Before any idea
@@ -10,24 +10,25 @@ and do". This file is about doing the pushing yourself, before they have to.
    posted decides the shape: a launch page or X post → 16:9, 40–60 s. A feed → 9:16, 10–20 s, with the hook
    already moving in frame 1 and readable muted.
 2. **The product's truth.** Read the feature's code: its exact strings, what it really does, and what the
-   character can really do (its emotes, morphs and habits). The best Mirrorly ideas came from real repertoire: the
-   bubble morph, glasses rising from below the chin, the calendar's black pill on today, "Been here before",
-   "Seal for my future self".
-3. **The ledger** (in the house file). For each earlier film, note its governing device, camera grammar, ending
+   character can really do (its emotes, morphs and habits). The best ideas come from real repertoire: a morph the
+   character already does in the app, a confirmation the product really shows, the way today is marked in its
+   calendar.
+3. **The ledger** (in `FILMS.md`). For each earlier film, note its governing device, camera grammar, ending
    and end line. A new idea must differ from every one of them on all four. Also check the **bank of ideas
    already pitched**: the user has seen those, so reviving one is fine, but say that's what it is.
-4. **The set.** What do the films say together, and what's missing? For Mirrorly, memory was covered many times
-   over; trust, the everyday ritual, teams and agents were not. A new film should add a sentence to the set, not
-   repeat one.
+4. **The set.** What do the films say together, and what's missing? If three films already sell the same
+   benefit, the next one should sell another (trust, the everyday habit, teams, integrations). A new film should
+   add a sentence to the set, not repeat one.
 
 ## The one-sentence test
 
 Every idea has to fit: **"<a rule of this film's world> — so <the argument> is seen, not said."**
 
-- *Deeper is later*: the camera falls through the year's days (Freefall).
-- *Looking back is zooming out*: today's page becomes a day, then a wall of days (The dots).
+- *Deeper is later*: the camera falls through a year of days to the one where a message is delivered.
+- *Looking back is zooming out*: today's page becomes a day in the calendar, then a wall of years.
 - *Two minutes is 0.14% of a day, and still 0.14% of a lifetime*: the sliver never changes; what you keep grows.
-- *A chat waits for your question*: the same chat window sits empty at the start and the end (Don't wait).
+- *A chat waits for your question*: the same empty chat window opens and closes the film, while the product
+  speaks first in between.
 
 If a viewer couldn't retell it in one sentence, it isn't an idea yet.
 
@@ -48,8 +49,8 @@ If a viewer couldn't retell it in one sentence, it isn't an idea yet.
    with a waiting caret.
 7. **One honest person, one number.** Learning to swim at 34 (0 m → 1 km), a debt going 12,400 → 0, a founder
    going 0 → 10 customers. Progress the viewer follows without explanation, including the gap where they stalled.
-8. **The camera is the idea.** Freefall through the days; one take threading through the letters of giant month
-   names; diving into its eye and out of the other; a crane from a sentence up to a life.
+8. **The camera is the idea.** A freefall through the days; one take threading through the letters of giant month
+   names; diving into the character's eye and out of the other; a crane from a sentence up to a life.
 9. **Contrast without a villain.** Make the case by behaviour (the chat waits, the character speaks first). Avoid
    side-by-side comparisons and anything that makes "the feed" the enemy.
 10. **Light and negative space.** Shadow play behind the page, a room with one lamp, black on black where only the
@@ -76,7 +77,7 @@ Score every raw idea and cut hard. The first ideas are usually safe and intercha
 | Buildable | It can't be drawn as flat shapes or upright planes in SVG within a day or two of work |
 
 Two more failure modes: **too busy** (more than one governing device, or more than about five beats of business)
-and **too close to a film the user liked** (when they like one, they want a sibling in spirit, not a copy).
+and **too close to a film that was liked** (people who liked one want a sibling in spirit, not a copy).
 
 ## Presenting
 
@@ -97,22 +98,23 @@ and **too close to a film the user liked** (when they like one, they want a sibl
 - Use at most four caption lines, each carrying one thing a newcomer must understand. Everything else is the
   person's own words (first person, one sentence each) and the character's.
 - **The character speaks first**, then the person answers. Its lines are warm and plain, like a friend
-  ("You weren't ready last time either."), never like surveillance or a coach.
-- Close the arc in two lines that mirror each other (day one ↔ today: "can't swim" → "someone who shows up").
+  ("You said the same thing in March."), never like surveillance or a coach.
+- Close the arc in two lines that answer each other (day one ↔ today: "can't swim" → "someone who shows up").
 - No invented statistics. No "Hey, you've got a couple of minutes." No scolding. Feelings are fine ("gone by
   Thursday"); claims must be true.
-- End line: the house pattern (for Mirrorly, "Mirrorly ___."), new for each film, then the URL.
+- End line: the house pattern (for example "<Product> ___." as a series), new for each film, then the URL.
 - If asked for **ASD-STE100**: use simple present and active voice, one instruction per sentence, short sentences
   and approved words; product names count as technical names.
 - Borrowed ideas (a book's rule, say) are paraphrased, with the credit in the post caption, not in the film.
 
-## Approved ideas and why they won
+## Ideas that worked, and why
 
-- **Freefall** (deeper is later): one rule, the camera does everything, and a straight-down view keeps text flat.
-- **Why you started**: a simpler story (one founder, one letter, six months), upright planes at depth, Mirrorly
-  speaks first, and an anamorphic outro where the message only makes sense from its own day.
-- **The dots**: a famous line the viewer already knows ("connect the dots looking back"), shown literally as a
-  zoom-out, with the logo built from the drawn line.
-- **Don't wait for the question**: one argument in plain sentences, written for the ideal customer (people who
-  already talk to an AI about their life), with no comparison shot.
-- **Make it a goal**: colour only in the goals, and liquid wants that set into solid goals.
+- **A falling camera through a year of days** (deeper is later): one rule, the camera does everything, and a
+  straight-down view keeps every line of text flat.
+- **One founder, one letter, six months**: a simpler story, upright planes at depth, the character speaking first,
+  and an outro where scattered pieces form the wordmark only from one exact point (the message only makes sense
+  from its own day).
+- **A line everyone already knows, shown literally** ("you can only connect the dots looking back" as a zoom-out
+  over kept days), with the logo built from the line the character draws.
+- **One argument in plain sentences**, written for the ideal customer, with no comparison shot.
+- **Colour only where it means something**: a black and white world where only the feature's objects are coloured.

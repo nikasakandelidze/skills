@@ -100,6 +100,44 @@ function thump(out, at, amp, from = 118, to = 46) {
     add(out, n0 + n, Math.sin(ph) * Math.exp(-t / 0.16) * Math.min(1, n / 120) * amp, [0.707, 0.707]);
   }
 }
+/** A drop into water: a note that bends upward as it dies. */
+function drop(out, at, midi, amp, pan = 0) {
+  const n0 = Math.round(at * SR), f = hz(midi), p = place(pan);
+  let ph = 0;
+  for (let n = 0; n < 0.4 * SR; n++) {
+    const t = n / SR;
+    ph += (TAU * f * (1 + 1.1 * (1 - Math.exp(-t / 0.035)))) / SR;
+    add(out, n0 + n, Math.sin(ph) * Math.exp(-t / 0.075) * Math.min(1, n / 96) * amp, p);
+  }
+}
+/** A swell too low to be a note (under a reveal). */
+function swell(out, at, dur, f, amp) {
+  const n0 = Math.round(at * SR), len = Math.round(dur * SR);
+  for (let n = 0; n < len; n++) add(out, n0 + n, Math.sin((TAU * f * n) / SR) * Math.sin((Math.PI * n) / len) ** 2 * amp, [0.707, 0.707]);
+}
+/** A pointer's button: down, and up again. */
+function click(out, at, amp, pan = 0) {
+  const p = place(pan);
+  for (const [dt, f, a] of [[0, 2100, 1], [0.075, 1500, 0.6]]) {
+    const n0 = Math.round((at + dt) * SR);
+    let lp = 0;
+    for (let n = 0; n < 700; n++) {
+      lp += ((rand() * 2 - 1) - lp) * 0.5;
+      add(out, n0 + n, (Math.sin((TAU * f * n) / SR) * Math.exp(-n / 90) * 0.7 + lp * Math.exp(-n / 40)) * amp * a, p);
+    }
+  }
+}
+/** A pencil drawn over paper: a fine grainy hiss, as loud as `level(t)` (0..1) says. */
+function pencil(out, from, to, amp, level) {
+  const n0 = Math.max(0, Math.round(from * SR)), n1 = Math.min(N, Math.round(to * SR));
+  let low = 0, band = 0, lp = 0;
+  for (let n = n0; n < n1; n++) {
+    const t = n / SR, k = clamp(level(t)), f = 2400 + 2400 * k, g = 2 * Math.sin((Math.PI * f) / SR);
+    low += g * band; band += g * ((rand() * 2 - 1) - low - band / 1.6);
+    lp += (band - lp) * 0.45;
+    add(out, n, lp * amp * k * (0.7 + 0.3 * Math.sin(t * 53) * Math.sin(t * 19)), place(0.2 * Math.sin(t * 0.9)));
+  }
+}
 /** A small glass bell. */
 function bell(out, at, midi, amp, pan = 0) {
   const n0 = Math.round(at * SR), f = hz(midi), p = place(pan);
@@ -195,6 +233,7 @@ air(fx, EV.glide[0], EV.glide[1] - EV.glide[0] + 0.3, 2400, 500, 0.05, { pan0: 0
 EV.blinks.forEach((at) => tick(fx, at + 0.05, 0.02));
 roll(EV.tag[0] - 0.05, [26, 38, 45, 50, 57, 62, 66, 69], 0.42, 0.07, -0.35);                       // the end line
 bell(fx, EV.url + 0.05, 93, 0.08, 0.2);
+void [drop, swell, click, pencil, thump];                                                        // more instruments, for other beats
 
 // ---------- the voice: each take cut at from..to and laid in at `at`, every line at the same strength ----------
 const voice = bus(), said = [];

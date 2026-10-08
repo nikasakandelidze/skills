@@ -1,22 +1,24 @@
 # Craft: camera, motion, text, composition
 
-## Camera grammars (pick one per film, ideally one the ledger hasn't used last)
+## Camera grammars (pick one per film, ideally one the ledger hasn't used recently)
 
 **A. Flat: pan and zoom only.** The world is one `<g>` with a matrix; titles sit in a screen-space group on top.
 Moves between views use the smooth zoom path (`zoomPath` in the starter's `lib.js`, van Wijk–Nuij, the same as
 `d3.interpolateZoom`): it rises in scale and comes back down so the centre moves at a steady screen speed, which
 is what makes long flights feel fluid. Hard cuts are a shot with `cut: true`. Nothing can tilt.
-*Used by:* The dots v2, Don't wait (a continuous flight over a calendar year), Goals.
+*Good for:* flights over a calendar or a map of pages, one continuous take through the product's world.
 
 **B. Upright planes at depth, with a lens that only translates.** Every element stands upright, facing the lens, at
 its own depth z (deeper = later). The lens moves in x, y and z only:
 `scale = f / (z − camZ)`, `screen = centre + (p − cam) · scale`. Depth reads from parallax, from fog to white past
 ~5000 px, and from CSS blur for depth of field. Camera z follows an exact monotone-cubic curve through knots.
-*Used by:* Why you started (months standing alternately left and right as the lens glides past).
+*Good for:* time passing (months standing alternately left and right as the lens glides past), a message
+travelling forward.
 
 **C. Straight-down 3D** (`matrix3d` planes in one `preserve-3d` context, camera looking straight down). Text lying
 on the floor stays flat only while the view is straight down. The user rejected every oblique or low view of text.
-*Used by:* Freefall. Avoid low hero shots over pages (On the day, Future me v1, The dots v1 were all rejected).
+*Good for:* falling through layers (a year of days below today's page). Avoid low hero shots over pages: every
+cut with them was rejected.
 
 **D. Eye and lens transitions** (combine with any grammar):
 - pull straight out of the character's eyes onto the page;
@@ -37,8 +39,8 @@ on the floor stays flat only while the view is straight down. The user rejected 
 - The character glides along long eased paths (`smoother`), with a gentle arc rather than a hop. It breathes
   (the blob's nine points wobble on two sines), blinks (a quick close, a slower open), and looks: gaze is a small
   spring towards the caret, the words, or the lens.
-- It changes shape once or twice a film, on purpose. In Mirrorly's case: the speech-bubble morph, glasses rising
-  from below the chin, the bubble growing into its dark room.
+- It changes shape once or twice a film, on purpose: its body growing into a speech bubble, reading glasses
+  rising into place, the bubble growing into a full-screen room.
 - The opening and the ending deserve the most care: an extreme close-up, a pull-out, a reveal.
 - One idea per beat, and one caret on screen at a time.
 
@@ -60,15 +62,14 @@ on the floor stays flat only while the view is straight down. The user rejected 
   text and for the product's text, outlined pills for chips, black pills for buttons.
 - Keep the character one size and in one place whenever it speaks; its bubble opens to one side.
 - Keep a safe margin (96 px) for type in screen space, and leave generous white.
-- Monochrome by default. When colour comes in, it must mean something (the goals were the only colour).
+- Monochrome by default. When colour comes in, it must mean something (only the feature's own objects).
 
 ## Endings (each film needs a new one)
 
-Already used: the typed wordmark with the character landing as the dot on the i (four films); the drawn line
-turning into the logo's horizon, with the kept days as its reflection (The dots); scattered glyph pieces that
-line up into the wordmark from one lens point (Why you started); the chat window waiting empty (Don't wait,
-before its wordmark); the goals orbiting above the end line (Goals). Pitched but not built: the eyes closing to
-black, the whole year inside its eyes.
+Check the ledger for the endings already used. Endings that have worked: the typed wordmark with the character
+landing as the dot on the i (the obvious one; use it at most once); the line the character drew turning into the
+logo; scattered glyph pieces that line up into the wordmark only from one point of view; the opening shot
+returning, changed; the character's eyes closing to black; the whole story reflected in its eyes.
 Look for an ending that completes this film's own device: the rule of the world, played one last time.
 
 ## Social cuts

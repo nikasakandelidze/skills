@@ -51,14 +51,14 @@ Offer one follow-up in a line, not a list: a 9:16 cut, a voice version, or post 
 
 ## After delivery
 
-- Add the film to the **ledger** in the house file: folder, length, voice, idea, camera grammar, ending, end line,
+- Add the film to the **ledger** in `FILMS.md`: folder, length, voice, idea, camera grammar, ending, end line,
   and the user's verdict once you have it.
-- Save new lessons (feedback, rig tricks, bugs) to the project memory note on films.
+- Save new lessons (feedback, rig tricks, bugs) in `FILMS.md` too, so the next film starts from them.
 - When the user gives feedback on a cut, rebuild in the same folder with the earlier cut kept in `v1/`, and say
   how each point was addressed.
 
 ## Post copy (when asked)
 
 Give 2–3 options: one about 2 sentences long, two short. Plain words, the product's real behaviour, the URL at the
-end, no hashtags or emoji unless asked. Match the user's framing (e.g. "it decides when to drop in, and you can
-call it yourself anytime").
+end, no hashtags or emoji unless asked. When the user gives a framing (what the product does on its own, what you
+can ask it for), keep it.

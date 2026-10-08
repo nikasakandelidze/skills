@@ -8,24 +8,34 @@
   const nw = (s) => (s.match(/\S+\s*/g) || []).length;
   const WS = 0.15, WF = 0.45;                                          // between the words of a spoken line; one word's fade
   const holdFor = (words) => clampn(0.8 + 0.1 * words, 1.3, 1.9);    // how long a finished line holds still before it goes
+  /** A card of speech starting at `t` (lines that come up word by word): when each line starts, when it is all in,
+   *  and when it may go. Chain beats off `out`. */
+  function card(lines, t) {
+    const lineAt = [];
+    let c = t;
+    for (const s of lines) { lineAt.push(c); c += (nw(s) - 1) * WS + 0.2; }
+    const last = lines.length - 1, words = lines.reduce((a, s) => a + nw(s), 0);
+    const done = lineAt[last] + (nw(lines[last]) - 1) * WS + WF;
+    return { lines, start: t, lineAt, done, words, out: done + holdFor(words) };
+  }
 
   // What is written on screen. You (Manrope) and the product / its character (Geist) are told apart by typeface.
   const TEXT = {
     date: 'Thursday, October 8',
-    line: 'Dear future me, keep going.',
+    line: 'Ship the new onboarding by Friday.',
     tagline: 'One idea, said once.',
     url: 'example.com',
   };
   // What the character says: its words come up one by one.
   const SAY = {
-    hello: 'Kept. I’ll bring it back.',
+    hello: 'Noted. I’ll check in on Thursday.',
   };
 
   // The voice-over (optional; references/sound-and-voice.md). Empty: no voice, the typed text carries the film.
   // One take per beat in audio/vo/ (keyed by the beat it voices), its phrases measured by `node audio/voice.mjs`;
   // `parts` is the line's text split the same way. A take's length sets its beat's length: the voice times the clock.
-  //   say: { file: '02-say.wav', feeling: 'calm', says: 'Kept. I’ll bring it back.', phrases: [[0.11, 0.62], [0.9, 2.05]],
-  //          parts: ['Kept.', 'I’ll bring it back.'] },
+  //   say: { file: '02-say.wav', feeling: 'calm', says: 'Noted. I’ll check in on Thursday.', phrases: [[0.11, 0.66], [0.94, 2.3]],
+  //          parts: ['Noted.', 'I’ll check in on Thursday.'] },
   const TAKES = {};
   const spoken = (k) => (TAKES[k] ? TAKES[k].phrases[TAKES[k].phrases.length - 1][1] - TAKES[k].phrases[0][0] : null);
 
@@ -49,5 +59,5 @@
     return { file: v.file, from, to, at: AT[k], feeling: v.feeling, says: v.says, type: parts.map((text, i) => ({ line: k, text, from: ph[i][0], to: ph[i][1] })) };
   });
 
-  window.TIMELINE = { DUR, T, TEXT, SAY, BLINKS, VOICE, tools: { dur, nw, holdFor, WS, WF } };
+  window.TIMELINE = { DUR, T, TEXT, SAY, BLINKS, VOICE, tools: { dur, nw, holdFor, card, WS, WF } };
 })();

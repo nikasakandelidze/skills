@@ -17,23 +17,21 @@
 
 ## Starting
 
-- **Starter:** `sh <this skill's folder>/scripts/new-film.sh output/<product>-<slug>` gives a 14 s film that
+- **Starter:** `sh <this skill's folder>/scripts/new-film.sh <films>/<product>-<slug>` gives a 14 s film that
   builds as is (about 70 s for `./make.sh`). Rewrite its world and keep the shape of each file.
-- **Fork:** for a grammar the starter lacks, copy the closest earlier film (`cp -R output/<film> output/<new>`),
-  delete its renders, and rewrite `timeline.js` and `film.js`. Closest rigs in the Mirrorly repo: flat pan/zoom with the bubble morph,
-  calendar and chat → `mirrorly-who-is-it-for`; upright depth planes → `mirrorly-why-you-started`; straight-down
-  3D → `mirrorly-from-you`; flat with a recorder, transcript and logo ending → `mirrorly-the-dots`; colour solids
-  in orbit → `mirrorly-goals`; perspective corridor and eye dive (use sparingly: tilts) → `mirrorly-drops-in`.
-- Other Claude sessions may be editing this repo at the same time. Build only inside your own film folder, and
+- **Fork:** when an earlier film in the ledger already has the grammar you need (upright depth planes, a calendar,
+  a chat window, a speech-bubble morph), copy its folder (`cp -R <films>/<film> <films>/<new>`), delete its
+  renders, and rewrite `timeline.js` and `film.js`. Note in `FILMS.md` which film has which rig.
+- Other Claude sessions may be editing the repo at the same time. Build only inside your own film folder, and
   render headless, never through a dev server.
 
 ## The clock (`timeline.js`)
 
 - Derive everything: `T.typed = T.type + dur(line)`, `T.next = T.typed + holdFor(nw(line))`. Never hand-type a
   time that depends on a line's length.
-- For speech, use the card/session pattern (in the Mirrorly repo, `output/mirrorly-who-is-it-for/timeline.js`): `card(lines, t)` gives when each
-  line starts, when it is all in (`done`), and when it may go (`out = done + holdFor`); `session()` wraps it in
-  glide → bubble opens → card → bubble closes.
+- For speech, use `card(lines, t)` (in the starter's `timeline.js` tools): it gives when each line starts, when
+  it is all in (`done`), and when it may go (`out = done + holdFor`). Wrap it in a session when the character has
+  a ritual for speaking: glide to its place → bubble opens → card → bubble closes.
 - With a voice, each take's measured length sets its beat's length (`spoken(k)` in the starter), and `VOICE` lists
   the cuts (`file`, `from`, `to`, `at`, `type` parts) for the score and the picture.
 
@@ -53,14 +51,14 @@
   leaves on a page land against where they were shown; the largest camera move per flight). Run them with
   `node render.mjs eval`.
 
-## The character (the Mirrorly rig; adapt it for another product's character)
+## The character rig (adapt it to the product's own character)
 
 - Body: nine points on a circle, each breathing on two sines with its own seeded phase, drawn as a closed
   Catmull-Rom curve. Black ink; lit from the upper left (#3a3a3a → #050505) when it needs volume.
-- Eyes: rounded rects. Mood is their shape (tall pills = idle in old films; the app's idle eyes are wide slits
-  [5.8, 2.2], matching the logo; squeezed = happy; narrowed = writing). Blink by height; gaze by offset.
-- Speech: the app's bubble morph (a superellipse with its tail at the lower left). Its words stay on the page as
-  its note when it draws back.
+- Eyes: rounded rects. Mood is their shape (tall pills = idle, squeezed = happy, narrowed = writing); match the
+  product's own idle eyes or logo when it has them. Blink by height; gaze by offset.
+- Speech: a bubble morph (a superellipse with a tail). Its words can stay on the page as its note when it draws
+  back.
 - In close-ups, swell the body once its edge leaves the frame, so the frame stays solid black around the eyes.
 
 ## Gotchas (each one cost a render)
